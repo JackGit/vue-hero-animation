@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .fade-transition {
+            transition: opacity .3s ease;
+        }
+        .fade-enter, .fade-leave {
+            opacity: 0;
+        }
+        .circle {
+            display: inline-block;
+            height: 200px;
+            width: 200px;
+            background-color: lightgreen;
+            border-radius: 50%;
+            font-size: 1em;
+            padding: 50%;
+            box-sizing: border-box;
+        }
+        .square {
+            display: inline-block;
+            height: 300px;
+            width: 100%;
+            background-color: lightcoral;
+            border-radius: 0;
+            font-size: 2em;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div id="mountNode">
+        <router-view transition="fade" transition-mode="out-in"></router-view>
+    </div>
+
+    <script type="text/x-template" id="pageATemplate">
+        <div>
+            <div>
+                <span class="circle" hero-name="myHero" hero-timing="ease-out" hero>
+                    Hero
+                </span>
+            </div>
+            <button @click="toPageB()">page B</button>
+        </div>
+    </script>
+
+    <script type="text/x-template" id="pageBTemplate">
+        <div>
+            <div>
+                <span class="square" hero-name="myHero" hero-timing="ease-in">
+                    Hero
+                </span>
+            </div>
+            <button @click="toPageA()">page A</button>
+        </div>
+    </script>
+
+    <script src="http://cdn.jsdelivr.net/vue/1.0.24/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/vue.router/0.7.10/vue-router.min.js"></script>
+    <script src="snabbt.min.js"></script>
+    <script src="demo.js"></script>
+</body>
+</html>
