@@ -2,33 +2,71 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=0">
+
+
     <title></title>
     <style>
+        * {
+            font-family: arial;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+        }
         .fade-transition {
             transition: opacity .3s ease;
         }
         .fade-enter, .fade-leave {
             opacity: 0;
         }
-        .circle {
-            display: inline-block;
-            height: 200px;
-            width: 200px;
-            background-color: lightgreen;
-            border-radius: 50%;
-            font-size: 1em;
-            padding: 50%;
-            box-sizing: border-box;
-        }
-        .square {
-            display: inline-block;
-            height: 300px;
-            width: 100%;
-            background-color: lightcoral;
-            border-radius: 0;
-            font-size: 2em;
+        ul {
+            list-style: none;
+            margin: 0;
             padding: 0;
-            box-sizing: border-box;
+        }
+        ul li {
+            background: lightgray;
+            box-shadow: 1px 1px 2px grey;
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+
+        ul li p {
+            margin-top: 5px;
+        }
+        .avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: lightcoral;
+            margin-right: 20px;
+            display: inline-block;
+        }
+        .details-page {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background: lightgray;
+        }
+        .details-avatar {
+            width: 100%;
+            height: 200px;
+            border-radius: 0px;
+            float: none;
+            margin: 0;
+            background: lightcoral;
+        }
+        .page-a-h {
+            margin: 0;
+            padding: 0;
+        }
+        .page-b-h {
+            margin: 0;
+            padding: 0;
         }
     </style>
 </head>
@@ -38,30 +76,42 @@
     </div>
 
     <script type="text/x-template" id="pageATemplate">
-        <div>
-            <div>
-                <span class="circle" hero-name="myHero" hero-timing="ease-out" hero>
-                    Hero
-                </span>
-            </div>
-            <button @click="toPageB()">page B</button>
-        </div>
+        <ul>
+            <li @click="toPageB()">
+                <span class="avatar" hero hero-name="hero-avatar"></span>
+                <div>
+                    <h4><span hero hero-name="hero-name" class="page-a-h">Jack Yang</span></h4>
+                    <p>short description</p>
+                </div>
+            </li>
+            <li>
+                <span class="avatar"></span>
+                <div>
+                    <h4>Raymone</h4>
+                    <p>short description about boss</p>
+                </div>
+            </li>
+        </ul>
     </script>
 
     <script type="text/x-template" id="pageBTemplate">
-        <div>
-            <div>
-                <span class="square" hero-name="myHero" hero-timing="ease-in">
-                    Hero
-                </span>
+        <div class="details-page">
+            <div class="details-avatar" hero hero-name="hero-avatar">
+                <h2 style="text-align:right"><span hero hero-name="hero-name" class="page-b-h">Jack Yang</span></h2>
             </div>
-            <button @click="toPageA()">page A</button>
+            <div>
+                <p>this is details description on this person</p>
+            </div>
         </div>
     </script>
 
-    <script src="http://cdn.jsdelivr.net/vue/1.0.24/vue.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/vue.router/0.7.10/vue-router.min.js"></script>
+
+    <script src="vue.min.js"></script>
+    <script src="vue-router.min.js"></script>
     <script src="snabbt.min.js"></script>
+    <script src="flip.js"></script>
+    <script src="../vue-hero-animation.js"></script>
     <script src="demo.js"></script>
+
 </body>
 </html>
